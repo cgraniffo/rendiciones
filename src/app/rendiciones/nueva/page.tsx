@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { getContexto } from "@/lib/auth";
 import { FormNuevaRendicion } from "../_components/form-nueva";
+import { DemoBadge } from "@/app/_components/demo-badge";
 
 export const metadata = { title: "Nueva rendición de gasto" };
 
@@ -69,8 +70,8 @@ export default async function NuevaRendicionPage() {
           >
             ← Rendiciones
           </Link>
-          <h1 className="text-xl font-extrabold tracking-tight text-white sm:text-2xl">
-            Nueva rendición de gasto
+          <h1 className="flex items-center gap-2 text-xl font-extrabold tracking-tight text-white sm:text-2xl">
+            Nueva rendición de gasto <DemoBadge />
           </h1>
         </header>
 

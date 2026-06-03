@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DemoBadge } from "@/app/_components/demo-badge";
 
 export function MaestroHeader({
   titulo,
@@ -17,8 +18,8 @@ export function MaestroHeader({
       >
         ← {volverLabel}
       </Link>
-      <h1 className="text-xl font-extrabold tracking-tight text-white sm:text-2xl">
-        {titulo}
+      <h1 className="flex items-center gap-2 text-xl font-extrabold tracking-tight text-white sm:text-2xl">
+        {titulo} <DemoBadge />
       </h1>
     </header>
   );

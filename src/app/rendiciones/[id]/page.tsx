@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { getContexto } from "@/lib/auth";
 import { cargarRendicionDetalle } from "../_lib";
 import { DetalleRendicion } from "../_components/detalle";
+import { DemoBadge } from "@/app/_components/demo-badge";
 
 type Params = Promise<{ id: string }>;
 
@@ -86,9 +87,12 @@ export default async function RendicionDetallePage({
           >
             ← Rendiciones
           </Link>
-          <h1 className="text-xl font-extrabold tracking-tight text-white sm:text-2xl">
-            Rendición #{rendicion.numero}
-            {rendicion.nombre ? ` — ${rendicion.nombre}` : ""}
+          <h1 className="flex flex-wrap items-center gap-2 text-xl font-extrabold tracking-tight text-white sm:text-2xl">
+            <span>
+              Rendición #{rendicion.numero}
+              {rendicion.nombre ? ` — ${rendicion.nombre}` : ""}
+            </span>
+            <DemoBadge />
           </h1>
           <p className="mt-0.5 text-xs text-emerald-100">
             Rendidor: <b>{rendicion.empleadoNombre}</b>

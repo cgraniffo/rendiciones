@@ -17,11 +17,11 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Rendiciones de gasto",
-    template: "%s · Rendiciones",
+    default: "Rendiciones de gasto · DEMO",
+    template: "%s · Rendiciones (Demo)",
   },
   description:
-    "App de rendición de gastos: anticipos, líneas de gasto, comprobantes y aprobación.",
+    "DEMO de app de rendición de gastos: anticipos, líneas de gasto, comprobantes y aprobación.",
 };
 
 export const viewport: Viewport = {

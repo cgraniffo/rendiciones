@@ -4,6 +4,8 @@ import { createClient } from "@/lib/supabase/server";
 import { getContexto } from "@/lib/auth";
 import { desglosaIva } from "../rendiciones/_lib";
 import { OrgSwitcher } from "@/app/_components/org-switcher";
+import { DemoBadge } from "@/app/_components/demo-badge";
+import { InfoToggle } from "@/app/_components/info-toggle";
 
 export const metadata = { title: "Dashboard" };
 
@@ -309,8 +311,8 @@ export default async function ReportesPage({
                 </span>
               )}
             </div>
-            <h1 className="text-xl font-extrabold tracking-tight text-white sm:text-2xl">
-              Dashboard
+            <h1 className="flex items-center gap-2 text-xl font-extrabold tracking-tight text-white sm:text-2xl">
+              Dashboard <DemoBadge />
             </h1>
             <p className="text-xs text-emerald-100">
               Hola, {ctx.nombre} 👋
@@ -322,6 +324,12 @@ export default async function ReportesPage({
               className="rounded-full bg-white px-4 py-2 text-sm font-bold text-emerald-800 shadow hover:bg-emerald-50"
             >
               Rendiciones
+            </Link>
+            <Link
+              href="/manual"
+              className="rounded-full bg-white/10 px-3 py-2 text-xs font-semibold text-emerald-50 ring-1 ring-emerald-500/40 hover:bg-white/20"
+            >
+              Manual
             </Link>
             {ctx.esAdmin && (
               <Link
@@ -338,6 +346,25 @@ export default async function ReportesPage({
             </form>
           </div>
         </header>
+
+        <div className="mb-4">
+          <InfoToggle titulo="¿Qué muestra este dashboard? (Demo)">
+            <p>
+              Resumen de las rendiciones de tu organización. Los KPIs muestran
+              cuánto se ha <b>anticipado</b>, cuánto se ha <b>rendido</b> y el{" "}
+              <b>saldo pendiente</b> de cerrar.
+            </p>
+            <p>
+              Todo es <b>navegable</b>: toca un estado, una categoría, un
+              rendidor o un mes para bajar al detalle y, desde ahí, a la
+              rendición específica. ¿Cómo se usa todo? Revisa el{" "}
+              <a href="/manual" className="font-semibold text-emerald-700 underline">
+                Manual de uso
+              </a>
+              . Recuerda que los datos son de ejemplo (demo).
+            </p>
+          </InfoToggle>
+        </div>
 
         {/* KPIs */}
         <section className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-4">

@@ -3,6 +3,8 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { getContexto } from "@/lib/auth";
 import { OrgSwitcher } from "@/app/_components/org-switcher";
+import { DemoBadge } from "@/app/_components/demo-badge";
+import { InfoToggle } from "@/app/_components/info-toggle";
 
 export const metadata = { title: "Rendiciones de gasto" };
 
@@ -128,8 +130,8 @@ export default async function RendicionesPage({
                 </span>
               )}
             </div>
-            <h1 className="text-xl font-extrabold tracking-tight text-white sm:text-2xl">
-              Rendiciones de gasto
+            <h1 className="flex items-center gap-2 text-xl font-extrabold tracking-tight text-white sm:text-2xl">
+              Rendiciones de gasto <DemoBadge />
             </h1>
             <p className="text-xs text-emerald-100">Hola, {ctx.nombre} 👋</p>
           </div>
@@ -139,6 +141,12 @@ export default async function RendicionesPage({
               className="rounded-full bg-white/10 px-3 py-2 text-xs font-semibold text-emerald-50 ring-1 ring-emerald-500/40 hover:bg-white/20"
             >
               Dashboard
+            </Link>
+            <Link
+              href="/manual"
+              className="rounded-full bg-white/10 px-3 py-2 text-xs font-semibold text-emerald-50 ring-1 ring-emerald-500/40 hover:bg-white/20"
+            >
+              Manual
             </Link>
             {ctx.esAdmin && (
               <Link
@@ -161,6 +169,27 @@ export default async function RendicionesPage({
             </form>
           </div>
         </header>
+
+        <div className="mb-4">
+          <InfoToggle titulo="¿Para qué sirven las rendiciones? (Demo)">
+            <p>
+              Una rendición refleja un <b>anticipo de caja chica</b> entregado a
+              una persona, que luego rinde con boletas/facturas. Sirve para
+              llevar su cuenta (cuánto se le pasó, cuánto rindió, qué saldo
+              queda), clasificar cada gasto por categoría y, al aprobar, marcar
+              las facturas como pagadas.
+            </p>
+            <p>
+              Estados: <b>borrador</b> (editable) → <b>presentada</b> (sellada) →{" "}
+              <b>aprobada</b>, y luego se <b>liquida</b> el saldo (devolución o
+              reembolso). Guía completa en el{" "}
+              <a href="/manual" className="font-semibold text-emerald-700 underline">
+                Manual de uso
+              </a>
+              .
+            </p>
+          </InfoToggle>
+        </div>
 
         {/* Filtros */}
         <form
