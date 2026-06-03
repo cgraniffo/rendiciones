@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+:root {
+  /* App diseñada solo en modo claro. */
+  color-scheme: light;
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans, "Inter", system-ui, sans-serif);
+  --font-mono: var(--font-mono, "JetBrains Mono", monospace);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Tabular numerals para montos. */
+.font-mono {
+  font-feature-settings: "tnum" 1;
+}
+
+/* Inputs: forzar color oscuro (defensa contra dark mode del SO). */
+input,
+textarea,
+select {
+  color: #111827;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #9ca3af;
+}
+
+/* Fondo mesh emerald sutil (reutilizado por las páginas del módulo). */
+.bg-hub-mesh {
+  background-color: #e8f7ef;
+  background-image:
+    radial-gradient(
+      ellipse 80% 60% at 8% 0%,
+      rgba(16, 185, 129, 0.18) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 60% 50% at 92% 100%,
+      rgba(6, 95, 70, 0.14) 0%,
+      transparent 55%
+    );
+}
+
+/* Fade-in suave al cargar. */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up {
+  animation: fade-up 500ms ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up {
+    animation: none;
+  }
+}
